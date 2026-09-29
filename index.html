@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stock Trading App</title>
+    <style>
+        body{
+            font-family:Arial;
+            background:#f2f2f2;
+            text-align:center;
+            margin-top:50px;
+        }
+
+        .box{
+            width:350px;
+            margin:auto;
+            background:white;
+            padding:20px;
+            border-radius:10px;
+            box-shadow:0 0 10px gray;
+        }
+
+        input,select,button{
+            width:90%;
+            padding:10px;
+            margin:10px;
+        }
+
+        h2{
+            color:darkblue;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+
+<h2>Stock Trading App</h2>
+
+<label>Select Stock</label>
+
+<select id="stock">
+    <option value="2500">TCS - ₹2500</option>
+    <option value="1800">Infosys - ₹1800</option>
+    <option value="3200">Reliance - ₹3200</option>
+</select>
+
+<input type="number" id="qty" placeholder="Enter Quantity">
+
+<button onclick="buyStock()">Buy Stock</button>
+
+<h3 id="result"></h3>
+
+</div>
+
+<script>
+
+function buyStock(){
+
+let price=document.getElementById("stock").value;
+let qty=document.getElementById("qty").value;
+
+if(qty==""){
+    alert("Enter Quantity");
+    return;
+}
+
+let total=price*qty;
+
+document.getElementById("result").innerHTML=
+"Stock Purchased Successfully!<br>Total Amount = ₹"+total;
+
+}
+
+</script>
+
+</body>
+</html>

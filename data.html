@@ -1,0 +1,50 @@
+-- Create Database
+CREATE DATABASE ElectricityDB;
+
+USE ElectricityDB;
+
+-- Create Table
+CREATE TABLE electricity_consumption (
+    id INT PRIMARY KEY,
+    month VARCHAR(20),
+    region VARCHAR(30),
+    consumer_type VARCHAR(30),
+    units_consumed INT,
+    bill_amount DECIMAL(10,2)
+);
+
+-- Insert Sample Data
+INSERT INTO electricity_consumption VALUES
+(1,'January','North','Residential',320,2100),
+(2,'February','South','Commercial',450,3100),
+(3,'March','East','Industrial',680,5200),
+(4,'April','West','Residential',290,1800),
+(5,'May','North','Industrial',720,5600);
+
+-- View Data
+SELECT * FROM electricity_consumption;
+
+-- Total Electricity Consumption
+SELECT SUM(units_consumed) AS Total_Units
+FROM electricity_consumption;
+
+-- Average Consumption
+SELECT AVG(units_consumed) AS Average_Units
+FROM electricity_consumption;
+
+-- Region-wise Consumption
+SELECT region,
+SUM(units_consumed) AS Total_Units
+FROM electricity_consumption
+GROUP BY region;
+
+-- Consumer Type Analysis
+SELECT consumer_type,
+SUM(units_consumed) AS Total_Units
+FROM electricity_consumption
+GROUP BY consumer_type;
+
+-- Highest Bill
+SELECT *
+FROM electricity_consumption
+ORDER BY bill_amount DESC;
